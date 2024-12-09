@@ -7,7 +7,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.secret_key = 'secret_key'
 db = SQLAlchemy(app)
 
-# Models
+
 class Flavor(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), unique=True, nullable=False)
@@ -26,18 +26,18 @@ class FlavorIngredients(db.Model):
     flavor_id = db.Column(db.Integer, db.ForeignKey('flavor.id'), primary_key=True)
     ingredient_id = db.Column(db.Integer, db.ForeignKey('ingredient.id'), primary_key=True)
 
-# Routes
+
 @app.route('/')
 def index():
     flavors = Flavor.query.all()
     search_query = request.args.get('search')
     seasonal_filter = request.args.get('seasonal')
 
-    # Apply search filter
+   
     if search_query:
         flavors = Flavor.query.filter(Flavor.name.contains(search_query)).all()
 
-    # Apply seasonal filter
+    
     if seasonal_filter:
         flavors = Flavor.query.filter_by(seasonal=True).all()
 
@@ -123,7 +123,7 @@ def delete_flavor(flavor_id):
         db.session.commit()
     return redirect(url_for('index'))
 
-# Run the app
+
 if __name__ == "__main__":
     with app.app_context():
         db.create_all()
