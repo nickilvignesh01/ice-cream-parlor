@@ -1,0 +1,221 @@
+/* Global Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #dea2bc;  /* Background color */
+    color: #ecf0f1;  /* Light text color for better contrast */
+    line-height: 1.6;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    min-height: 100vh;
+    background-size: 70%;
+    background-image: url('https://w0.peakpx.com/wallpaper/707/696/HD-wallpaper-vanilla-ice-cream-chocolate-cone-strawberries-blueberry.jpg'); /* Image link */
+    background-position: center;
+    background-attachment: fixed;
+}
+
+/* Header */
+header h1 {
+    color: #ffffff;  /* White text for good visibility */
+    text-align: center;
+    font-size: 3rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);  /* Stronger text shadow for better visibility */
+}
+
+/* Section Styles */
+section {
+    margin-bottom: 40px;
+}
+label {
+    font-size: 1rem;
+    color: black;  /* Change the text color to black */
+}
+
+h2 {
+    color: #ffffff;  /* White text for headings */
+    text-align: center;
+    margin-bottom: 15px;
+    font-size: 1.75rem;
+    font-weight: 600;
+}
+
+/* Form Styles */
+form {
+    background-color: rgba(255, 255, 255, 0.9);  /* Slightly transparent white background */
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    margin: 0 auto;
+    transition: all 0.3s ease;
+}
+
+form:hover {
+    transform: scale(1.05);
+}
+
+input, button {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+input[type="text"] {
+    background-color: #fafafa;
+}
+
+input[type="text"]:focus, button:focus {
+    border-color: #3498db;
+    outline: none;
+}
+
+button {
+    background-color: #3498db;  /* Blue button */
+    color: white;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #2980b9;
+}
+
+input[type="checkbox"] {
+    width: auto;
+    margin-right: 5px;
+}
+
+label {
+    font-size: 1rem;
+}
+
+/* Button Styles */
+.btn {
+    background-color: #ff6347;  /* Coral button */
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: 600;
+    display: inline-block;
+    margin-top: 10px;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #e74c3c;
+}
+
+/* Remove Button */
+.btn-remove {
+    
+   
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 3px;
+    font-size: 0.9rem;
+    display: inline-block; 
+    margin-left: 10px;  
+}
+
+
+/* Links */
+a {
+    color: #3498db;  /* Blue link */
+    text-decoration: none;
+    font-weight: 600;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: #2980b9;
+}
+
+/* List Styling */
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    font-size: 1.1rem;
+    padding: 8px 0;
+    border-bottom: 1px solid #ddd;
+    display: flex;  /* Align items in a row */
+    justify-content: space-between;
+    align-items: center;
+}
+
+li:last-child {
+    border-bottom: none;
+}
+
+/* Button Container */
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    body {
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.25rem;
+    }
+
+    form {
+        padding: 20px;
+    }
+}
+
+/* Animations */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+body {
+    animation: fadeIn 1s ease-out;
+}
+
+/* Delete Button Styles */
+.delete-btn {
+    color: white;
+    background-color: red;
+    padding: 5px 10px;
+    text-decoration: none;
+    border-radius: 3px;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.delete-btn:hover {
+    background-color: darkred;
+}

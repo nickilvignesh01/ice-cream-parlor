@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ice Cream Parlor</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <header>
+        <h1>Welcome to the Ice Cream Parlor!</h1>
+    </header>
+
+    <!-- Search & Filter Flavors -->
+    <section class="search-section">
+        <h2>Search & Filter Flavors</h2>
+        <form action="/" method="get">
+            <input type="text" name="search" placeholder="Search by Flavor Name" value="{{ request.args.get('search') }}">
+            <label>
+                <input type="checkbox" name="seasonal" {% if request.args.get('seasonal') %} checked {% endif %}> Seasonal Only
+            </label>
+            <button type="submit" class="btn-search">Search</button>
+        </form>
+    </section>
+
+    <!-- Flavors List -->
+    <section class="flavors-list">
+        <h2>Flavors</h2>
+        <ul>
+            {% for flavor in flavors %}
+            <li>
+                {{ flavor.name }} {% if flavor.seasonal %}(Seasonal){% endif %}
+                <a href="{{ url_for('add_to_cart', flavor_id=flavor.id) }}" class="btn">Add to Cart</a>
+                <a href="{{ url_for('delete_flavor', flavor_id=flavor.id) }}" class="btn-remove" style="color: red; margin-left: 10px;">Delete</a>
+            </li>
+            {% endfor %}
+        </ul>
+    </section>
+
+    <!-- Ingredients List -->
+    <section class="ingredients-section">
+        <h2>Ingredients</h2>
+        <a href="{{ url_for('ingredients') }}" class="btn">View All Ingredients</a>
+        <form action="/add_ingredient" method="post">
+            <input type="text" name="name" placeholder="Ingredient Name" required>
+            <button type="submit" class="btn">Add Ingredient</button>
+        </form>
+        <ul>
+            {% for ingredient in ingredients %}
+            <li>{{ ingredient.name }}</li>
+            {% endfor %}
+        </ul>
+    </section>
+
+    <!-- Add a Flavor -->
+    <section class="add-flavor-section">
+        <h2>Add a Flavor</h2>
+        <form action="/add_flavor" method="post">
+            <input type="text" name="name" placeholder="Flavor Name" required>
+            <label>
+                <input type="checkbox" name="seasonal"> Seasonal
+            </label>
+            <button type="submit" class="btn">Add Flavor</button>
+        </form>
+    </section>
+
+    <!-- Your Cart -->
+    <section class="cart-section">
+        <h2>Your Cart</h2>
+        <ul>
+            {% if cart_items %}
+                {% for item in cart_items %}
+                <li>
+                    {{ item.name }}
+                    <a href="{{ url_for('remove_from_cart', flavor_id=item.id) }}" class="btn-remove">Remove</a>
+                </li>
+                {% endfor %}
+            {% else %}
+                <li>Your cart is empty</li>
+            {% endif %}
+        </ul>
+        <a href="{{ url_for('view_cart') }}" class="btn">Go to Cart</a>
+    </section>
+
+    <!-- Suggest a New Flavor -->
+    <section class="suggest-flavor-section">
+        <h2>Suggest a New Flavor</h2>
+        <form action="/suggest_flavor" method="post">
+            <input type="text" name="name" placeholder="New Flavor Name" required>
+            <button type="submit" class="btn">Submit Suggestion</button>
+        </form>
+    </section>
+
+    <!-- Allergy Concerns -->
+    <section class="allergy-section">
+        <h2>Allergy Concerns</h2>
+        <form action="/add_allergy" method="post">
+            <input type="text" name="name" placeholder="Allergy Concern" required>
+            <button type="submit" class="btn">Add Concern</button>
+        </form>
+    </section>
+</body>
+</html>
